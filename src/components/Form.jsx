@@ -11,7 +11,7 @@ const Form = ({ reqType, setReqType }) => {
                     btnName='Users'
                 />
             </div>
-            <div className='mx-3'>
+            <div className='mx-3 border'>
                 <Button 
                     reqType={reqType}
                     setReqType={setReqType}
