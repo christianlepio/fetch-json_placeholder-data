@@ -25,7 +25,8 @@ function App() {
       }
     }
 
-    setTimeout(() => fetchItems(), 2000) //call fetch items funciton
+    fetchItems() //call fetch items funciton
+    
   }, [reqType])
 
   return (
