@@ -24,9 +24,8 @@ function App() {
         setIsLoading(false)
       }
     }
-
-    fetchItems() //call fetch items funciton
     
+    setTimeout(() => fetchItems(), 1000) //call fetch items funciton
   }, [reqType])
 
   return (
