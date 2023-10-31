@@ -8,21 +8,21 @@ const Form = ({ reqType, setReqType }) => {
                 <Button 
                     reqType={reqType}
                     setReqType={setReqType}
-                    btnName='Fetch Users'
+                    btnName='Users'
                 />
             </div>
             <div className="col text-center">
                 <Button 
                     reqType={reqType}
                     setReqType={setReqType}
-                    btnName='Fetch Posts'
+                    btnName='Posts'
                 />
             </div>
             <div className="col text-center mb-3">
                 <Button 
                     reqType={reqType}
                     setReqType={setReqType}
-                    btnName='Fetch Comments'
+                    btnName='Comments'
                 />
             </div>
         </form>
