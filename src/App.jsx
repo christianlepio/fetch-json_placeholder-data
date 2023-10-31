@@ -39,11 +39,21 @@ function App() {
       </header>
       <main>
         {isLoading ? 
+          //spinners for loading
           <div className="d-flex justify-content-center my-5 py-5">
-            <div className="spinner-border my-5" style={{width: '3rem', height: '3rem'}} role="status">
+            <div className="spinner-grow text-primary my-5" style={{width: '3rem', height: '3rem'}} role="status">
               <span className="visually-hidden my-5">Loading...</span>
             </div>&nbsp;&nbsp;
-            <div className="spinner-grow my-5" style={{width: '3rem', height: '3rem'}} role="status">
+            <div className="spinner-grow text-success my-5" style={{width: '3rem', height: '3rem'}} role="status">
+              <span className="visually-hidden my-5">Loading...</span>
+            </div>&nbsp;&nbsp;
+            <div className="spinner-grow text-danger my-5" style={{width: '3rem', height: '3rem'}} role="status">
+              <span className="visually-hidden my-5">Loading...</span>
+            </div>&nbsp;&nbsp;
+            <div className="spinner-grow text-warning my-5" style={{width: '3rem', height: '3rem'}} role="status">
+              <span className="visually-hidden my-5">Loading...</span>
+            </div>&nbsp;&nbsp;
+            <div className="spinner-grow text-light my-5" style={{width: '3rem', height: '3rem'}} role="status">
               <span className="visually-hidden my-5">Loading...</span>
             </div>
           </div>
