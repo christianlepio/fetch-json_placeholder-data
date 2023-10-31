@@ -8,9 +8,11 @@ function App() {
   const [reqType, setReqType] = useState('users')
   const [items, setItems] = useState([])
   const [isLoading, setIsLoading] = useState(true)
+  const [isError, setIsError] = useState(false)
 
   useEffect(() => {
     setIsLoading(true)
+    setIsError(false)
 
     const fetchItems = async () => {
       try {
@@ -19,13 +21,18 @@ function App() {
 
         setItems(data) //assign fetched data to items state
       } catch (err) {
-        console.log(err)
-      } finally {
-        setIsLoading(false)
+        console.log(err.message)
+        setIsError(true)
+        setIsLoading(true)
       }
     }
     
-    setTimeout(() => fetchItems(), 1000) //call fetch items funciton
+    setTimeout(() => {
+      fetchItems()
+      if (isError) setIsLoading(true)
+      else setIsLoading(false)
+    }, 1000) //call fetch items funciton
+
   }, [reqType])
 
   return (
@@ -40,23 +47,30 @@ function App() {
       <main>
         {isLoading ? 
           //spinners for loading
-          <div className="d-flex justify-content-center my-5 py-5">
-            <div className="spinner-grow text-primary my-5" style={{width: '3rem', height: '3rem'}} role="status">
-              <span className="visually-hidden my-5">Loading...</span>
-            </div>&nbsp;&nbsp;
-            <div className="spinner-grow text-success my-5" style={{width: '3rem', height: '3rem'}} role="status">
-              <span className="visually-hidden my-5">Loading...</span>
-            </div>&nbsp;&nbsp;
-            <div className="spinner-grow text-danger my-5" style={{width: '3rem', height: '3rem'}} role="status">
-              <span className="visually-hidden my-5">Loading...</span>
-            </div>&nbsp;&nbsp;
-            <div className="spinner-grow text-warning my-5" style={{width: '3rem', height: '3rem'}} role="status">
-              <span className="visually-hidden my-5">Loading...</span>
-            </div>&nbsp;&nbsp;
-            <div className="spinner-grow text-light my-5" style={{width: '3rem', height: '3rem'}} role="status">
-              <span className="visually-hidden my-5">Loading...</span>
+          <>
+            <div className="d-flex justify-content-center mt-5 pt-5 pb-4">
+              <div className="spinner-grow text-primary mt-5" style={{width: '3rem', height: '3rem'}} role="status">
+                <span className="visually-hidden mt-5">Loading...</span>
+              </div>&nbsp;&nbsp;
+              <div className="spinner-grow text-success mt-5" style={{width: '3rem', height: '3rem'}} role="status">
+                <span className="visually-hidden mt-5">Loading...</span>
+              </div>&nbsp;&nbsp;
+              <div className="spinner-grow text-danger mt-5" style={{width: '3rem', height: '3rem'}} role="status">
+                <span className="visually-hidden mt-5">Loading...</span>
+              </div>&nbsp;&nbsp;
+              <div className="spinner-grow text-warning mt-5" style={{width: '3rem', height: '3rem'}} role="status">
+                <span className="visually-hidden mt-5">Loading...</span>
+              </div>&nbsp;&nbsp;
+              <div className="spinner-grow text-light mt-5" style={{width: '3rem', height: '3rem'}} role="status">
+                <span className="visually-hidden mt-5">Loading...</span>
+              </div>
             </div>
-          </div>
+            {isError ? 
+              <div className='d-flex justify-content-center'>
+                <p>You're not Connected, try to check your internet connection!</p>
+              </div> : null
+            }
+          </>
         :
           <div className="container overflow-y-auto rounded-3 border mb-3" style={{maxHeight: '75vh'}}>
             {/* <List items={items} /> */}
