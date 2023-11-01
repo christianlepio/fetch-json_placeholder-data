@@ -26,12 +26,13 @@ function App() {
         setIsLoading(true)
       }
     }
-    
-    setTimeout(() => {
-      fetchItems()
+
+    fetchItems() //call fetch items funciton
+
+    setTimeout(() => {  
       if (isError) setIsLoading(true)
       else setIsLoading(false)
-    }, 1000) //call fetch items funciton
+    }, 2000) 
 
   }, [reqType])
 
@@ -67,17 +68,22 @@ function App() {
             </div>
             {isError ? 
               <div className='d-flex justify-content-center'>
-                <p>You're not Connected, try to check your internet connection!</p>
+                <p>You're not Connected! try to check your internet connection, and reload page.</p>
               </div> : null
             }
           </>
         :
-          <div className="container overflow-y-auto rounded-3 border mb-3" style={{maxHeight: '75vh'}}>
-            {/* <List items={items} /> */}
-            <Table 
-              items={items}
-            />
-          </div>
+          isError ? 
+            <div className='d-flex justify-content-center mt-5 pt-4'>
+              <p>You're not Connected! try to check your internet connection, and reload page.</p>
+            </div>
+          :
+            <div className="container overflow-y-auto rounded-3 border mb-3" style={{maxHeight: '75vh'}}>
+              {/* <List items={items} /> */}
+              <Table 
+                items={items}
+              />
+            </div>
         }
       </main>
     </>
