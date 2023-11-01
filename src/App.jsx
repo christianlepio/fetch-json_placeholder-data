@@ -17,9 +17,13 @@ function App() {
     const fetchItems = async () => {
       try {
         const response = await fetch(`${API_URL}${reqType}`) //fetch api syntax
-        const data = await response.json() //get response json
 
-        setItems(data) //assign fetched data to items state
+        if (!response.ok) {
+          throw Error('Did not receive expected data!')
+        } else {
+          const data = await response.json() //get response json
+          setItems(data) //assign fetched data to items state
+        }
       } catch (err) {
         console.log(err.message)
         setIsError(true)
@@ -78,12 +82,17 @@ function App() {
               <p>You're not Connected! try to check your internet connection, and reload page.</p>
             </div>
           :
-            <div className="container overflow-y-auto rounded-3 border mb-3" style={{maxHeight: '75vh'}}>
-              {/* <List items={items} /> */}
-              <Table 
-                items={items}
-              />
-            </div>
+            items.length > 0 ?
+              <div className="container overflow-y-auto rounded-3 border mb-3" style={{maxHeight: '75vh'}}>
+                {/* <List items={items} /> */}
+                <Table 
+                  items={items}
+                />
+              </div>
+            :
+              <div className='d-flex justify-content-center mt-5 pt-4'>
+                <p>No available data here.</p>
+              </div>
         }
       </main>
     </>

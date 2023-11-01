@@ -3,22 +3,22 @@ import Button from './Button'
 
 const Form = ({ reqType, setReqType }) => {
     return (
-        <form onSubmit={(e) => e.preventDefault()} className="row justify-content-center border-bottom mb-3">
-            <div className="col text-center">
+        <form onSubmit={(e) => e.preventDefault()} className="d-flex justify-content-center border-bottom mb-3">
+            <div>
                 <Button 
                     reqType={reqType}
                     setReqType={setReqType}
                     btnName='Users'
                 />
             </div>
-            <div className="col text-center">
+            <div className='mx-3'>
                 <Button 
                     reqType={reqType}
                     setReqType={setReqType}
                     btnName='Posts'
                 />
             </div>
-            <div className="col text-center mb-3">
+            <div className="mb-3">
                 <Button 
                     reqType={reqType}
                     setReqType={setReqType}
